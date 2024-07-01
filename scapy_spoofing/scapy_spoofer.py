@@ -11,11 +11,12 @@ def arp_spoof(target_ip, gateway_ip, interface="eth0"):
             # Wait 2 sec until next
             time.sleep(2)
     except KeyboardInterrupt:
+        # If interrupt/stop command is sent, spoofing get stopped
         print("\nARP spoofing detenido")
 
 if __name__ == "__main__":
     # Request target IP and Gateway(router) IP's
     target_ip = input("Ingrese la IP objetivo: ")
-    gateway_ip = input("Ingrese la IP del gateway: ")
+    gateway_ip = input("Ingrese la IP del gateway(router): ")
 
     arp_spoof(target_ip, gateway_ip)
